@@ -1,0 +1,134 @@
+#:kivy 1.11.1
+# .kv file that defines the structure of the app (main.py)
+<AppStruct>:
+    PageLayout:
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: 0 / 255.,32 / 255., 91 / 255., 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.width, self.height
+                Color:
+                    rgba: 191/ 255.,153/ 255., 91/ 255., 1
+                Rectangle:
+                    pos: self.x + 20, self.y + 20
+                    size: self.width -40, self.height -40
+                Color:
+                    rgba: 0 / 255.,32 / 255., 91 / 255., 1
+                Rectangle:
+                    pos: self.x + 25, self.y + 25
+                    size: self.width -50, self.height -50
+                Color:
+                    rgba: 255/ 255.,255/255.,255/255., 1
+                Rectangle:
+                    pos: self.x + 40, self.y + 40
+                    size:self.width -80, self.height-80
+            orientation: 'vertical'
+            Label:
+                size_hint_y:1.0
+                height: 1.5 * self.texture_size[1]
+                text: 'EGEN-310R, Group B.4'
+                font_size:48
+                halign: 'center'
+                valign: 'top'
+                color: 191/ 255.,153/255.,91/255., 1
+                outline_width:3
+                outline_color:0 / 255.,32 / 255., 91 / 255., 1
+            AsyncImage:
+                color :1,1,1,1
+                source: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/Montana_State_Bobcats_logo.svg/227px-Montana_State_Bobcats_logo.svg.png'
+        GridLayout:
+            cols:2
+            BoxLayout:
+                orientation: 'vertical'
+                canvas:
+                    Color:
+                        rgba: 0 / 255.,32 / 255., 91 / 255., 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: 255/ 255., 255/ 255., 255/ 255., 1
+                    Rectangle:
+                        pos: self.x + 13, self.y + 13
+                        size:self.width -26, self.height-26
+                Label:
+                    text: 'Basic Controls'
+                    font_size:48
+                    color:0,0,0,1
+                    underline:'True'
+                Label:
+                    size_hint_y:1.0
+                    text: 'Forward: W'
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: 'Reverse: S'
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: 'Left: A'
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: 'Right: D'
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: "Decrease Target Speed: Down Arrow"
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: "Increase Target Speed: Up Arrow"
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: "Decrease Start Speed: Left Arrow"
+                    font_size:24
+                    color:0,0,0,1
+                Label:
+                    text: "Increase Start Speed: Right Arrow"
+                    font_size:24
+                    color:0,0,0,1
+
+
+        GridLayout:
+            id:d
+            cols:1
+            padding:5,5,5,5
+            canvas:
+                Color:
+                    rgba: 0 / 255.,32 / 255., 91 / 255., 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 255/ 255., 255/ 255., 255/ 255., 1
+                Rectangle:
+                    pos: self.x + 25, self.y + 25
+                    size:self.width -50, self.height-50
+            Button:
+                id:d1
+                text:'Click to Discover Nearby Devices'
+                font_size:32
+                on_press: root.discover()
+                color: 0/ 255.,153/255.,11/255., 1
+                background_color: 0,0,0,0
+            Devices:
+
+                id:d2
+                size: self.size
+                cols:1
+                padding:5,5,5,5
+                Button:
+                    padding_x:10
+                    padding_y:10
+                    id: d3
+                    text: 'Address: DC:A6:32:37:E6:48'
+                    font_size:32
+                    on_press:root.connect()
+                    color: 0/ 255.,11/255.,255/255., 1
+                    background_color: 0,0,0,.1
+
+
