@@ -47,8 +47,18 @@ pi@raspberrypi:~$ sudo nano filename.sh
 * Add the following into the new file. Adding 'sudo python3 /PATH/TO/server.py is one way to start the server (not preferred).
 ```
 #! /bin/bash
+sudo systemctl bluetooth enable
+sudo hciconfig hci0 up
 sudo echo -e 'power on\nagent on\ndiscoverable on\nscan on\nquit' | sudo bluetoothctl
 ```
+Additionally, adding the following allows a connection to be made to a specific device.
+```
+#! /bin/bash
+sudo systemctl bluetooth enable
+hciconfig hci0 up
+sudo echo -e 'power on\nagent on\ndiscoverable on\nscan on\n connect XX:XX:XX:XX\nquit' | sudo bluetoothctl
+```
+
 * Save and exit. Then give the new file and the server.py file access permissions.
 ```
 pi@raspberrypi:~$ sudo chmod +X filename.sh
@@ -83,3 +93,11 @@ Th Frontend has files that are used for the application using [Kivy](kivy)
 ### Cats Conundrum
 
 Contains all the files mentioned above in addition to the python environment that is needed to run the files.
+
+## Running the App
+First, turn on the raspberry pi and locate the destination of the application.
+Once found, run the program using python3.
+Alternativly, you can create a shell file as mentioned earlier and adding...
+```sudo python3 /PATH/TO/APPLICATION.py ```
+Giving it access permissions as earler, this can be ran by adding it to your desktop, or by using the terminal.
+```./PATH/TO/shell_for_application.sh file ```
