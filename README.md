@@ -26,7 +26,7 @@ The Backend directory contains the files that are used to create a Bluetooth ser
 * client.py
 * movements.py
 ### Frontend
-Th Frontend has files that are used for the application using [Kivy](#kivy)
+Th Frontend has files that are used for the application using [Kivy](kivy)
 * main.py
 * launch_me.kv
 * connect.kv
