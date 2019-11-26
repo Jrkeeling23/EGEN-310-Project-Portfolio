@@ -17,6 +17,56 @@ What will be needed in terms of software and hardware. Follow the links for inst
 * [Raspberry Pi](https://www.adafruit.com/category/105) (3, 4, or zero). Must have Bluetooth connectivity.
 * Adafruit DC and Stepper Motor ([HAT](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi/overview?gclid=CjwKCAiAlO7uBRANEiwA_vXQ-79H7aV8Ql1Dwbz5FU_IP-XY1XgD2iuNmu-fn2I6Fy7RoLhIUEFMxRoCd9IQAvD_BwE) or [Bonnet](https://www.adafruit.com/product/4280?gclid=CjwKCAiAlO7uBRANEiwA_vXQ-8Dt6Pb63q9ybWfFCYqH_QHKKfQPZxtOaQ894nUELJAkP48LXHv2MxoCG0UQAvD_BwE))
 * 4 DC Motors
+
+### Raspberry Pi
+The raspberry pi operating system used is [Raspbian](https://www.raspberrypi.org/downloads/). This OS comes with python3.
+
+#### Setup Bluetooth from terminal
+* First install [pip3](https://pip.pypa.io/en/stable/installing/), [adafruit motorkit](https://circuitpython.readthedocs.io/projects/motorkit/en/latest/) and [PyBluez](https://pypi.org/project/PyBluez/)
+
+* Using bluetoothctl, bluetooth can be setup from the terminal.
+```
+pi@raspberrypi:~$ bluetoothctl
+Agent registered
+[bluetooth] power on 
+[bluetooth] agent on
+[bluetooth] discoverable on
+[bluetooth] scan on
+[bluetooth] quit
+```
+* Using 'pair' and 'connect' will allow a device to reconnect without the terminal.
+```
+[bluetooth] pair XX:XX:XX:XX:XX:XX
+[bluetooth] connect XX:XX:XX:XX:XX:XX
+```
+#### Setup Bluetooth on boot
+* To set up bluetooth discoverable and scanning as well as the RFCOMM server on boot, a shell file must be created using your text editor. 
+```
+pi@raspberrypi:~$ sudo nano filename.sh
+```
+* Add the following into the new file. Adding 'sudo python3 /PATH/TO/server.py is one way to start the server (not preferred).
+```
+#! /bin/bash
+sudo echo -e 'power on\nagent on\ndiscoverable on\nscan on\nquit' | sudo bluetoothctl
+```
+* Save and exit. Then give the new file and the server.py file access permissions.
+```
+pi@raspberrypi:~$ sudo chmod +X filename.sh
+pi@raspberrypi:~$ sudo chmod +X /PATH/TO/server.py
+
+```
+* These can then added to the crontab using root.
+```
+pi@raspberrypi:~$ sudo -i
+root@raspberrypi:~# crontab -e
+```
+* This opens the crontab file. Add the following to the bottom of the crontab.
+```
+@reboot /PATH/TO/filename.sh
+@reboot /PATH/TO/server.py
+```
+* Save, exit, and reboot. 
+
 ## Directory Structure
 The current structure of the files is redundant only to simplify components for the instructor.
 
