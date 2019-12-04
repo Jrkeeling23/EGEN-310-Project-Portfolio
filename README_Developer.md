@@ -1,7 +1,6 @@
-# EGEN-310-Project-Portfolio
+# Raspberry Pi RC Car
 
-The computer science discipline for the Cats Conundrum project involves developing the software to control an RC car wirelessly and using a GUI. 
-In this case, Bluetooth is used to connect wirelessly, while Kivy is used to create a GUI to do so.  
+For developers; The following provides a detailed instruction of an approach to program an RC car that uses bluetooth. 
 
 ## Getting Started
 Requirements to setup the programming development environment.
