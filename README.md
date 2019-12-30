@@ -1,5 +1,6 @@
 # EGEN-310-Project-Portfolio
-EGEN-310R: Cat's Conundrum project computer science discipline work.
+EGEN-310R: Multi-disciplinary Engineering Design
+Cat's Conundrum project computer science discipline work.
 ## Instruction for Users and Developers
 
 If you are a user, please see [README_User.md](README_User.md).
